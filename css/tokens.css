@@ -1,0 +1,58 @@
+/* Living Kitchen — design tokens (11_VISUAL_DNA + 12_MOTION_GRAMMAR + 18_BUILD_SPEC) */
+:root {
+  /* Colour — fixed semantic roles (06 law 8) */
+  --paper-env: #f7f0de;      /* Parchment — environment/base */
+  --ink: #1e1d1a;            /* Charcoal — text/outlines */
+  --brick: #d94f35;          /* Brick Tomato — action/appetite */
+  --mustard: #e8b83a;        /* Mustard — highlight/attention */
+  --herb: #2f6b4f;           /* Forest Herb — success/progress */
+  --cobalt: #3156c9;         /* Cobalt — selection/information */
+  --paper: #fffdf7;          /* Paper White — readable surfaces */
+  --paper-dim: #efe5cb;
+  --ink-soft: #4a463d;
+  --line: #d8cba6;
+  --brick-deep: #8f2318;   /* Brick for small text on paper — AA contrast where --brick fails */
+  --on-accent: #ffffff;      /* Text on saturated accents (herb/cobalt stamps) */
+  --scrim: rgba(30, 29, 26, 0.45); /* Drawer/backdrop veil — flat, never blurred */
+
+  /* Typography — system stacks until repo font licensing verified (11 OPEN) */
+  --font-display: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+
+  /* Type scale (11) — hero 64–112 / mobile 42–64; section 32–56; card 18–26; body 14–18 */
+  --text-hero: clamp(42px, 6vw, 72px);
+  --text-section: clamp(28px, 4vw, 44px);
+  --text-card: 20px;
+  --text-body: 16px;
+  --text-meta: 14px;
+  --text-label: 12px;
+
+  /* Spacing — 4px base rhythm (18) */
+  --s2: 8px; --s3: 12px; --s4: 16px; --s6: 24px; --s8: 32px; --s12: 48px; --s16: 64px;
+
+  /* Stroke / radius / elevation / z (18). Elevation = flat offset stamps, never blur (11). */
+  --stroke-ui: 2px;
+  --stroke-illo: 3px;
+  --radius-control: 12px;
+  --radius-card: 14px 12px 16px 12px;   /* controlled irregularity (06 law 7) */
+  --radius-stage: 18px 16px 20px 14px;
+  --radius-ticket: 6px;
+  --radius-pill: 999px;
+  --shadow-stamp: 3px 3px 0 var(--ink);
+  --shadow-press: 1px 1px 0 var(--ink);
+  --shadow-food: drop-shadow(5px 6px 0 rgba(30, 29, 26, 0.9));
+  --focus-ring: 3px solid var(--cobalt);
+  --focus-offset: 2px;
+  --target-min: 44px;                    /* touch target floor (17) */
+  --z-env: 0; --z-surface: 10; --z-food: 20; --z-interactive: 30; --z-feedback: 40; --z-modal: 50;
+
+  /* Motion grammar (12) — easing + tokens */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-settle: cubic-bezier(0.34, 1.25, 0.64, 1); /* mild overshoot, settles to rest */
+  --t-snap: 150ms;      /* 120–180 */
+  --t-settle: 340ms;    /* 280–420 */
+  --t-assemble: 600ms;  /* 450–700 */
+  --t-reveal: 650ms;    /* 500–800 */
+  --t-celebrate: 900ms; /* 700–1200 non-blocking */
+}

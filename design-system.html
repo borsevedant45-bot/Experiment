@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Living Kitchen design-system preview — canonical tokens and primitives. Dev-facing, not product IA.">
+  <title>Living Kitchen — Design System</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/primitives.css">
+  <link rel="stylesheet" href="css/app.css">
+  <style>
+    .ds-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--s3); }
+    .swatch { border: var(--stroke-ui) solid var(--ink); border-radius: var(--radius-card); overflow: hidden; }
+    .swatch i { display: block; height: 64px; }
+    .swatch span { display: block; padding: 8px 12px; font-size: var(--text-meta); background: var(--paper); }
+    .swatch code { font-family: var(--font-mono); }
+    .space-bar { background: var(--mustard); border: var(--stroke-ui) solid var(--ink); height: var(--s4); }
+    .demo-block { margin-bottom: var(--s8); }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#ds-main">Skip to preview</a>
+  <header class="site-header">
+    <nav class="nav" aria-label="Design system">
+      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 16 100 72" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/kitchen.svg#tomato"/></svg></span>Living Kitchen</a>
+      <div class="nav-links"><a href="index.html">← Back to product</a></div>
+    </nav>
+  </header>
+
+  <div class="world-shell">
+    <main id="ds-main">
+      <h1 class="display-hero">Design system</h1>
+      <p class="text-note">Canonical tokens (<code>css/tokens.css</code>) + primitives (<code>css/primitives.css</code>). Screens compose these in <code>css/app.css</code>. Locked direction: <code>11_VISUAL_DNA</code> / <code>12_MOTION_GRAMMAR</code> / <code>13_PHYSICAL_INTERACTION</code> / <code>17_RAP</code>.</p>
+
+      <section class="demo-block" aria-label="Color">
+        <h2 class="display-section">Color — fixed semantic roles</h2>
+        <div class="ds-grid">
+          <div class="swatch"><i style="background:var(--paper-env)"></i><span><strong>Parchment</strong> <code>--paper-env</code><br>environment/base</span></div>
+          <div class="swatch"><i style="background:var(--ink)"></i><span><strong>Charcoal Ink</strong> <code>--ink</code><br>text/outlines</span></div>
+          <div class="swatch"><i style="background:var(--brick)"></i><span><strong>Brick Tomato</strong> <code>--brick</code><br>action/appetite</span></div>
+          <div class="swatch"><i style="background:var(--brick-deep)"></i><span><strong>Brick Deep</strong> <code>--brick-deep</code><br>small text on paper</span></div>
+          <div class="swatch"><i style="background:var(--mustard)"></i><span><strong>Mustard</strong> <code>--mustard</code><br>highlight/attention</span></div>
+          <div class="swatch"><i style="background:var(--herb)"></i><span><strong>Forest Herb</strong> <code>--herb</code><br>success/progress</span></div>
+          <div class="swatch"><i style="background:var(--cobalt)"></i><span><strong>Cobalt</strong> <code>--cobalt</code><br>selection/information</span></div>
+          <div class="swatch"><i style="background:var(--paper);border-bottom:2px solid var(--ink)"></i><span><strong>Paper White</strong> <code>--paper</code><br>readable surfaces</span></div>
+        </div>
+      </section>
+
+      <section class="demo-block" aria-label="Typography">
+        <h2 class="display-section">Typography + spacing + elevation</h2>
+        <p class="display-hero" style="margin:0">Hero Aa 64–112</p>
+        <p class="display-section" style="margin:0">Section Aa 32–56</p>
+        <p style="font-size:var(--text-card);font-weight:700;margin:8px 0">Card Aa 18–26</p>
+        <p style="margin:8px 0">Body Aa 14–18 — appetite + curiosity, always legible.</p>
+        <p class="meta">Meta 14px · ink-soft</p>
+        <p class="label">Label 12px · mono · tracked — ticket-head / stage-label</p>
+        <div class="row" style="margin-top:16px" aria-label="Spacing scale">
+          <span class="space-bar" style="width:8px"></span>
+          <span class="space-bar" style="width:16px"></span>
+          <span class="space-bar" style="width:24px"></span>
+          <span class="space-bar" style="width:32px"></span>
+          <span class="space-bar" style="width:48px"></span>
+          <span class="meta" style="margin:0">8 / 16 / 24 / 32 / 48 — 4px rhythm</span>
+        </div>
+        <p class="row" style="margin-top:16px">
+          <button class="btn">Stamp <code>--shadow-stamp</code></button>
+          <span class="badge">Elevation = flat offsets, never blur</span>
+        </p>
+      </section>
+
+      <section class="demo-block" aria-label="Surfaces and controls">
+        <h2 class="display-section">Surfaces · label · badge · buttons · divider</h2>
+        <div class="surface-card" style="margin-bottom:12px">
+          <p class="label">surface-card — counter / food-card / menu-item / panel</p>
+          <h3 style="margin:8px 0 4px;font-size:var(--text-card)">Sample dish card</h3>
+          <p class="meta">Stable metadata zone · <span class="price">₹199</span></p>
+          <p class="row">
+            <button class="btn" type="button">Place on tray</button>
+            <button class="btn secondary" type="button">Secondary</button>
+            <button class="btn quiet" type="button">Quiet</button>
+            <span class="badge">Attention</span>
+            <span class="badge badge--success">Success</span>
+            <span class="badge badge--info">Info</span>
+          </p>
+        </div>
+        <hr class="divider">
+        <div class="surface-ticket surface-card">
+          <p class="label">surface-ticket — dashed pack seal</p>
+          <p class="meta">Confirmation + tracking share this skin.</p>
+        </div>
+        <hr class="divider divider--dashed">
+        <p class="row">
+          <span class="qty" role="group" aria-label="Demo quantity">
+            <button type="button" aria-label="Decrease">−</button><output>1</output><button type="button" aria-label="Increase">+</button>
+          </span>
+          <span class="meta" style="margin:0">QuantityControl — conventional + semantic</span>
+        </p>
+      </section>
+
+      <section class="demo-block" aria-label="Food object">
+        <h2 class="display-section">Food object — modular parts</h2>
+        <p class="text-note">Second family parameterization (bakery): same <code>data-part</code> contract, different fills. Parts: base → food → garnish → steam → shadow.</p>
+        <svg class="food-object" width="300" height="170" viewBox="0 0 300 170" role="img" aria-label="Illustrated naan basket with steam">
+          <ellipse data-part="shadow" cx="150" cy="148" rx="100" ry="12" fill="#1E1D1A" opacity="0.12"/>
+          <g data-part="base">
+            <rect x="55" y="104" width="190" height="32" rx="10" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3"/>
+          </g>
+          <g data-part="food">
+            <ellipse cx="120" cy="98" rx="30" ry="16" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="3"/>
+            <ellipse cx="180" cy="98" rx="30" ry="16" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="3"/>
+            <circle cx="112" cy="94" r="3" fill="#D94F35"/><circle cx="128" cy="100" r="3" fill="#D94F35"/>
+            <circle cx="172" cy="94" r="3" fill="#D94F35"/><circle cx="188" cy="100" r="3" fill="#D94F35"/>
+          </g>
+          <g data-part="garnish" stroke="#2F6B4F" stroke-width="3" stroke-linecap="round">
+            <line x1="150" y1="86" x2="150" y2="76"/>
+          </g>
+          <g data-part="steam" stroke="#1E1D1A" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round">
+            <path d="M125 62 q6 -8 0 -16 q-6 -8 0 -16"/>
+            <path d="M175 62 q6 -8 0 -16 q-6 -8 0 -16"/>
+          </g>
+        </svg>
+      </section>
+
+      <section class="demo-block" aria-label="Asset library">
+        <h2 class="display-section">Asset library — <code>assets/kitchen.svg</code></h2>
+        <p class="text-note">Stable silhouettes (08 rule 1), referenced with <code>&lt;use&gt;</code> — never flattened. Choreographed parts stay inline; these symbols are the reusable cast.</p>
+        <div class="ds-grid" id="ds-assets"></div>
+      </section>
+
+      <section class="demo-block" aria-label="Drawer">
+        <h2 class="display-section">Drawer — tray metaphor, dialog behavior</h2>
+        <p class="text-note">Escape closes · backdrop click closes · focus is moved in and returned · Tab cycles inside (17). Controller: <code>window.LKDrawer</code> in <code>js/primitives.js</code>.</p>
+        <p><button class="btn" type="button" id="ds-drawer-open">Open packed-tray drawer</button></p>
+      </section>
+
+      <section class="demo-block" aria-label="Motion gate">
+        <h2 class="display-section">Motion gate + focus</h2>
+        <p class="text-note" id="ds-motion-readout">Reading motion preference…</p>
+        <p class="text-note">Tokens: <code>snap 150ms · settle 340ms · assemble 600ms · reveal 650ms · celebrate 900ms</code> · easing <code>cubic-bezier(0.22,1,0.36,1)</code> + settle overshoot. Focus ring: <code>3px cobalt + 2px offset</code>, independent of motion. Tab through this page — every control shows it.</p>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" data-drawer-backdrop></div>
+  <section class="drawer" id="ds-drawer" role="dialog" aria-modal="true" aria-labelledby="ds-drawer-title" aria-hidden="true" tabindex="-1">
+    <p class="label">OrderTray preview</p>
+    <h2 class="drawer-title" id="ds-drawer-title">Packed tray</h2>
+    <p class="meta">2 × Classic Veg Thali · <span class="price">₹498</span></p>
+    <p class="row">
+      <button class="btn" type="button">Pack &amp; continue</button>
+      <button class="btn secondary" type="button" data-drawer-close>Keep browsing</button>
+    </p>
+  </section>
+
+  <script src="js/primitives.js"></script>
+  <script>
+    (function () {
+      var mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      document.getElementById("ds-motion-readout").textContent =
+        "This browser reports prefers-reduced-motion: " + (mq.matches ? "REDUCE — large translation/scale and ambient loops are off; static indicators remain." : "no preference — full tactile motion is allowed.");
+      document.getElementById("ds-drawer-open").addEventListener("click", function () { window.LKDrawer.open("ds-drawer"); });
+      var assets = ["plate", "tray", "bowl", "box", "bag", "ticket", "journey-mark",
+        "tomato", "chili", "herb-sprig", "onion", "lemon",
+        "ladle", "spatula", "jar", "steam-wisp", "ink-star", "counter-sign"];
+      document.getElementById("ds-assets").innerHTML = assets.map(function (a) {
+        return '<div class="swatch"><svg viewBox="0 0 100 100" width="100%" height="96" aria-hidden="true"><use href="assets/kitchen.svg#' + a + '"/></svg><span><code>#' + a + "</code></span></div>";
+      }).join("");
+    })();
+  </script>
+</body>
+</html>

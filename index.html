@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Living Kitchen — every order feels like a tiny food story: discover it, assemble it, send it, and watch it arrive.">
+  <title>Living Kitchen — Food Delivery</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/primitives.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#/" aria-label="Living Kitchen home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 16 100 72" width="20" height="20" aria-hidden="true" focusable="false"><use href="assets/kitchen.svg#tomato"/></svg></span>
+        Living Kitchen
+      </a>
+      <div class="nav-links" role="list">
+        <a href="#/" data-nav="home" role="listitem">Discovery</a>
+        <a href="#/search" data-nav="search" role="listitem">Search</a>
+        <a href="#/orders" data-nav="orders" role="listitem">Orders</a>
+        <a href="#/cart" data-nav="cart" role="listitem">Tray (<span id="nav-count">0</span>)</a>
+        <button id="tray-peek" class="peek" type="button" aria-haspopup="dialog" aria-expanded="false" hidden>Peek</button>
+      </div>
+    </nav>
+  </header>
+
+  <div class="world-shell" id="world-shell">
+    <!-- WorldShell: quiet illustrated kitchen that wakes on intent (08) -->
+    <section class="kitchen-stage" aria-label="Kitchen stage">
+      <span class="stage-label">Station 01 — The Kitchen Wakes</span>
+      <div class="stage-grid">
+        <div class="stage-copy">
+          <h1 class="hero-title">Every order is a tiny food story.</h1>
+          <p class="hero-sub">
+            <strong>Discover it, assemble it, send it, watch it arrive.</strong>
+            This illustrated kitchen re-composes around your intent — the order itself
+            is the central object, from tray to sealed pack to journey.
+          </p>
+          <p class="row"><a class="btn" href="#route-home">Browse counters ↓</a></p>
+
+      <!-- Modular SVG: plate/base → food → garnish → steam → shadow (16) -->
+      <svg class="food-object" width="300" height="190" viewBox="0 0 300 190" role="img"
+           aria-label="Illustrated thali meal on a tray with rising steam">
+        <!-- shadow -->
+        <ellipse data-part="shadow" cx="150" cy="162" rx="105" ry="14" fill="#1E1D1A" opacity="0.12"/>
+        <!-- tray -->
+        <g data-part="tray">
+          <rect x="30" y="118" width="240" height="34" rx="10" fill="#E8B83A" stroke="#1E1D1A" stroke-width="3"/>
+          <rect x="48" y="126" width="60" height="8" rx="4" fill="#1E1D1A" opacity="0.15"/>
+        </g>
+        <!-- plate -->
+        <g data-part="plate">
+          <ellipse cx="150" cy="112" rx="86" ry="30" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="3"/>
+          <ellipse cx="150" cy="108" rx="62" ry="20" fill="none" stroke="#1E1D1A" stroke-width="2" opacity="0.4"/>
+        </g>
+        <!-- food -->
+        <g data-part="food">
+          <ellipse cx="118" cy="102" rx="26" ry="13" fill="#D94F35" stroke="#1E1D1A" stroke-width="3"/>
+          <ellipse cx="182" cy="102" rx="26" ry="13" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3"/>
+          <circle cx="150" cy="96" r="22" fill="#E8B83A" stroke="#1E1D1A" stroke-width="3"/>
+          <circle cx="143" cy="90" r="4" fill="#FFFDF7"/>
+          <circle cx="158" cy="99" r="3" fill="#FFFDF7"/>
+        </g>
+        <!-- garnish -->
+        <g data-part="garnish" stroke="#1E1D1A" stroke-width="2">
+          <line x1="108" y1="92" x2="114" y2="84" stroke="#2F6B4F" stroke-width="3" stroke-linecap="round"/>
+          <line x1="190" y1="92" x2="196" y2="84" stroke="#2F6B4F" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="150" cy="78" r="5" fill="#D94F35"/>
+        </g>
+        <!-- steam -->
+        <g data-part="steam" stroke="#1E1D1A" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round">
+          <path d="M120 66 q6 -8 0 -16 q-6 -8 0 -16"/>
+          <path d="M150 66 q6 -8 0 -16 q-6 -8 0 -16"/>
+          <path d="M180 66 q6 -8 0 -16 q-6 -8 0 -16"/>
+        </g>
+      </svg>
+      <p class="meta">Every dish drawn fresh — the same kitchen, composed around you.</p>
+        </div>
+        <!-- Pantry wall: quiet supporting cast (08). Decorative → hidden from AT (17).
+             One anchor (the thali) dominates; props stay small and still, save steam. -->
+        <svg class="stage-scene" viewBox="0 0 420 340" aria-hidden="true" focusable="false">
+          <!-- shelf with preserves + produce -->
+          <line x1="30" y1="118" x2="390" y2="118" stroke="#1E1D1A" stroke-width="4" stroke-linecap="round"/>
+          <line x1="60" y1="118" x2="60" y2="134" stroke="#1E1D1A" stroke-width="4" stroke-linecap="round"/>
+          <line x1="360" y1="118" x2="360" y2="134" stroke="#1E1D1A" stroke-width="4" stroke-linecap="round"/>
+          <use href="assets/kitchen.svg#jar" x="52" y="65" width="72" height="53"/>
+          <use href="assets/kitchen.svg#tomato" x="148" y="81" width="52" height="37"/>
+          <use href="assets/kitchen.svg#onion" x="216" y="77" width="52" height="41"/>
+          <use href="assets/kitchen.svg#jar" x="286" y="74" width="60" height="44"/>
+          <use href="assets/kitchen.svg#ink-star" x="8" y="86" width="22" height="22" opacity="0.7"/>
+          <use href="assets/kitchen.svg#ink-star" x="388" y="66" width="16" height="16" opacity="0.55"/>
+          <!-- hanging sign + rail with tools -->
+          <line x1="54" y1="118" x2="54" y2="150" stroke="#1E1D1A" stroke-width="3"/>
+          <line x1="106" y1="118" x2="106" y2="150" stroke="#1E1D1A" stroke-width="3"/>
+          <use href="assets/kitchen.svg#counter-sign" x="30" y="150" width="100" height="80"/>
+          <line x1="250" y1="170" x2="400" y2="170" stroke="#1E1D1A" stroke-width="4" stroke-linecap="round"/>
+          <use href="assets/kitchen.svg#ladle" x="286" y="172" width="46" height="42"/>
+          <use href="assets/kitchen.svg#herb-sprig" x="344" y="174" width="40" height="32"/>
+          <!-- counter with tray, hot dal (steam source), packed box -->
+          <line x1="20" y1="292" x2="400" y2="292" stroke="#1E1D1A" stroke-width="5" stroke-linecap="round"/>
+          <use href="assets/kitchen.svg#tray" x="28" y="236" width="140" height="56"/>
+          <use href="assets/kitchen.svg#bowl" x="180" y="241" width="92" height="51"/>
+          <path class="steam-rise" d="M208 246 q7 -9 0 -18 q-7 -9 0 -18" fill="none" stroke="#1E1D1A" stroke-width="3" stroke-linecap="round"/>
+          <path class="steam-rise late" d="M238 248 q7 -9 0 -18 q-7 -9 0 -18" fill="none" stroke="#1E1D1A" stroke-width="3" stroke-linecap="round"/>
+          <use href="assets/kitchen.svg#box" x="292" y="242" width="96" height="50"/>
+        </svg>
+      </div>
+    </section>
+
+    <main id="main">
+      <!-- HOME / DISCOVERY -->
+      <section class="route" id="route-home" aria-label="Discovery">
+        <h2 class="section-title">What are you craving?</h2>
+        <p class="section-note">The field reorganizes around intent. Pick a station — counters below re-compose. Prices and ETAs always stay in plain sight.</p>
+        <div class="stations" role="group" aria-label="Craving stations" id="stations">
+          <button class="station" aria-pressed="true" data-station="all">Whole Kitchen</button>
+          <button class="station" aria-pressed="false" data-station="thali">Thali Counter</button>
+          <button class="station" aria-pressed="false" data-station="street">Street Counter</button>
+          <button class="station" aria-pressed="false" data-station="bakery">Bakery Counter</button>
+        </div>
+        <div class="counters" id="restaurant-counters"></div>
+      </section>
+
+      <!-- SEARCH -->
+      <section class="route" id="route-search" aria-label="Search">
+        <h2 class="section-title">Craving lens</h2>
+        <p class="section-note">Search behaves like an intent lens — the field reorganizes around your query. Try “thali”, “chaat”, or “bread”.</p>
+        <div class="search-row">
+          <input id="search-input" type="search" placeholder="Search dishes or counters…" aria-label="Search dishes or counters" autocomplete="off">
+          <label class="meta" for="sort-select">Sort</label>
+          <select id="sort-select" aria-label="Sort search results">
+            <option value="relevance">Most craveable</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+          </select>
+        </div>
+        <p class="meta" id="search-count" role="status"></p>
+        <div class="counters" id="search-results" aria-live="polite"></div>
+      </section>
+
+      <!-- RESTAURANT -->
+      <section class="route" id="route-restaurant" aria-label="Restaurant and menu">
+        <div id="restaurant-detail"></div>
+      </section>
+
+      <!-- CART -->
+      <section class="route" id="route-cart" aria-label="Packed collection">
+        <h2 class="section-title">Your tray</h2>
+        <p class="section-note">A packed collection, not a checkpoint. Totals stay explicit at all times.</p>
+        <p><span class="badge" id="cart-state">Empty tray</span></p>
+        <div id="cart-detail"></div>
+      </section>
+
+      <!-- CHECKOUT -->
+      <section class="route" id="route-checkout" aria-label="Checkout station">
+        <h2 class="section-title">Seal the order</h2>
+        <p class="section-note">A calm packing station: your details, sealed safely.</p>
+        <div class="checkout-grid">
+          <form id="checkout-form" novalidate>
+            <fieldset class="mods" id="fulfill-group">
+              <legend>Fulfillment</legend>
+              <div class="mod-row">
+                <label class="mod"><input type="radio" name="fulfill" value="delivery" checked><span>Delivery · ₹29</span></label>
+                <label class="mod"><input type="radio" name="fulfill" value="pickup"><span>Pickup · free</span></label>
+              </div>
+            </fieldset>
+            <p class="meta" id="fulfill-note" role="status"></p>
+            <div class="field">
+              <label for="f-name">Name</label>
+              <input id="f-name" name="name" required autocomplete="name" placeholder="Aarya Sharma">
+            </div>
+            <div class="field" id="f-address-wrap">
+              <label for="f-address">Delivery address</label>
+              <input id="f-address" name="address" required autocomplete="street-address" placeholder="Flat 4, Green Lane">
+            </div>
+            <div class="field">
+              <label for="f-pay">Payment</label>
+              <select id="f-pay" name="payment" required>
+                <option value="">Choose payment…</option>
+                <option>UPI</option>
+                <option>Card ending 4242</option>
+                <option>Cash on delivery</option>
+              </select>
+            </div>
+            <p id="checkout-error" class="form-error" role="alert" tabindex="-1" hidden></p>
+            <button class="btn" type="submit">Place order · <span id="checkout-total">₹0</span></button>
+          </form>
+          <aside class="panel" aria-label="Order summary">
+            <h3>Pack summary</h3>
+            <div id="checkout-summary"></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- ORDER / TRACKING -->
+      <section class="route" id="route-order" aria-label="Confirmation and tracking">
+        <div id="order-detail"></div>
+      </section>
+
+      <!-- ORDERS -->
+      <section class="route" id="route-orders" aria-label="Past orders">
+        <h2 class="section-title">Prior packs</h2>
+        <p class="section-note">A visual archive — any prior pack rebuilds straight into your tray.</p>
+        <div class="counters" id="orders-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>Living Kitchen · every order is a tiny food story. Motion respects <code>prefers-reduced-motion</code>. No glassmorphism, no gradients, no particles, no gesture-only paths. <a href="design-system.html">Design system</a></p>
+  </footer>
+
+  <div class="drawer-backdrop" data-drawer-backdrop></div>
+  <section class="drawer" id="quick-tray" role="dialog" aria-modal="true" aria-labelledby="quick-tray-title" aria-hidden="true" tabindex="-1">
+    <p class="label">Quick tray — packed collection at a glance</p>
+    <h2 class="drawer-title" id="quick-tray-title">Tray peek</h2>
+    <div id="quick-tray-body"></div>
+    <p class="row">
+      <a class="btn secondary" href="#/cart" data-drawer-nav>Review tray</a>
+      <a class="btn" href="#/checkout" data-drawer-nav>Checkout</a>
+      <button class="btn secondary" type="button" data-drawer-close>Keep browsing</button>
+    </p>
+  </section>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="js/primitives.js"></script>
+  <script src="js/hero.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <!-- Living Kitchen — asset symbol library (16_ASSET_DIRECTION).
+       Flat 2D vector, charcoal outlines, opaque palette fills.
+       Stable silhouettes (08 rule 1). Reference via <use href="assets/kitchen.svg#id">.
+       Animated choreography stays inline; these symbols are the reusable cast. -->
+  <defs>
+    <!-- plates / bowls / trays (P0) -->
+    <symbol id="plate" viewBox="0 30 100 52">
+      <ellipse cx="50" cy="56" rx="44" ry="20" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="4"/>
+      <ellipse cx="50" cy="54" rx="30" ry="12" fill="none" stroke="#1E1D1A" stroke-width="2.5" opacity="0.45"/>
+    </symbol>
+    <symbol id="tray" viewBox="0 50 100 40">
+      <rect x="8" y="58" width="84" height="24" rx="7" fill="#E8B83A" stroke="#1E1D1A" stroke-width="4"/>
+      <rect x="20" y="66" width="34" height="6" rx="3" fill="#1E1D1A" opacity="0.18"/>
+    </symbol>
+    <symbol id="bowl" viewBox="0 35 100 55">
+      <path d="M12 50 h76 c0 22 -16 34 -38 34 s-38 -12 -38 -34 Z" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="4" stroke-linejoin="round"/>
+      <ellipse cx="50" cy="50" rx="38" ry="11" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="4"/>
+      <ellipse cx="50" cy="50" rx="27" ry="7" fill="#E8B83A"/>
+      <circle cx="42" cy="49" r="2.5" fill="#D94F35"/><circle cx="58" cy="51" r="2.5" fill="#D94F35"/>
+    </symbol>
+    <!-- packaging (P0) -->
+    <symbol id="box" viewBox="0 36 100 52">
+      <rect x="20" y="42" width="60" height="40" rx="4" fill="#EFE5CB" stroke="#1E1D1A" stroke-width="4"/>
+      <rect x="20" y="56" width="60" height="13" fill="#D94F35" stroke="#1E1D1A" stroke-width="3"/>
+      <line x1="20" y1="42" x2="80" y2="42" stroke="#1E1D1A" stroke-width="4"/>
+      <circle cx="66" cy="49" r="8" fill="#E8B83A" stroke="#1E1D1A" stroke-width="3"/>
+    </symbol>
+    <symbol id="bag" viewBox="0 24 100 66">
+      <path d="M30 40 h40 l6 44 h-52 Z" fill="#E8B83A" stroke="#1E1D1A" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="27" y="30" width="46" height="12" rx="3" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="3.5"/>
+      <circle cx="50" cy="62" r="10" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3"/>
+      <circle cx="50" cy="62" r="3" fill="#FFFDF7"/>
+    </symbol>
+    <!-- ticket / journey (P0) -->
+    <symbol id="ticket" viewBox="0 0 100 100">
+      <rect x="28" y="12" width="44" height="76" rx="3" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="4"/>
+      <line x1="28" y1="26" x2="72" y2="26" stroke="#1E1D1A" stroke-width="2.5" stroke-dasharray="4 4"/>
+      <rect x="35" y="34" width="30" height="5" rx="2.5" fill="#1E1D1A"/>
+      <rect x="35" y="44" width="22" height="5" rx="2.5" fill="#1E1D1A" opacity="0.55"/>
+      <rect x="35" y="54" width="27" height="5" rx="2.5" fill="#1E1D1A" opacity="0.55"/>
+      <rect x="35" y="68" width="18" height="10" fill="#E8B83A" stroke="#1E1D1A" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="journey-mark" viewBox="0 20 100 60">
+      <path d="M10 72 C32 24 68 88 90 30" fill="none" stroke="#1E1D1A" stroke-width="3.5" stroke-dasharray="7 6" stroke-linecap="round"/>
+      <circle cx="10" cy="72" r="7" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3"/>
+      <circle cx="90" cy="30" r="7" fill="#E8B83A" stroke="#1E1D1A" stroke-width="3"/>
+      <circle cx="52" cy="56" r="5" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="3"/>
+    </symbol>
+    <!-- ingredient family (P0) -->
+    <symbol id="tomato" viewBox="0 16 100 72">
+      <circle cx="50" cy="58" r="26" fill="#D94F35" stroke="#1E1D1A" stroke-width="4"/>
+      <path d="M50 32 l-12 -8 12 -2 12 2 Z" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3" stroke-linejoin="round"/>
+      <line x1="50" y1="32" x2="50" y2="22" stroke="#1E1D1A" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="chili" viewBox="0 10 100 70">
+      <path d="M30 30 C26 58 44 78 72 74 C48 68 38 52 40 30 Z" fill="#D94F35" stroke="#1E1D1A" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M40 30 c-2 -8 4 -14 12 -14" fill="none" stroke="#2F6B4F" stroke-width="6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="herb-sprig" viewBox="0 14 100 80">
+      <line x1="50" y1="88" x2="50" y2="20" stroke="#2F6B4F" stroke-width="5" stroke-linecap="round"/>
+      <ellipse cx="36" cy="62" rx="13" ry="7" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3" transform="rotate(-30 36 62)"/>
+      <ellipse cx="64" cy="62" rx="13" ry="7" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3" transform="rotate(30 64 62)"/>
+      <ellipse cx="36" cy="40" rx="12" ry="6.5" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3" transform="rotate(-30 36 40)"/>
+      <ellipse cx="64" cy="40" rx="12" ry="6.5" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="3" transform="rotate(30 64 40)"/>
+    </symbol>
+    <symbol id="onion" viewBox="0 14 100 78">
+      <ellipse cx="50" cy="60" rx="24" ry="26" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="4"/>
+      <path d="M38 44 c-4 10 -4 24 2 34 M50 40 c-3 12 -3 28 0 40 M62 44 c4 10 4 24 -2 34" fill="none" stroke="#1E1D1A" stroke-width="2.5" opacity="0.5"/>
+      <path d="M50 34 c-1 -8 -6 -12 -12 -14 M50 34 c1 -8 6 -12 12 -14" fill="none" stroke="#2F6B4F" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="lemon" viewBox="0 20 100 48">
+      <path d="M14 62 A36 36 0 0 0 86 62 Z" fill="#E8B83A" stroke="#1E1D1A" stroke-width="4" stroke-linejoin="round"/>
+      <line x1="50" y1="62" x2="50" y2="30" stroke="#FFFDF7" stroke-width="3"/>
+      <line x1="50" y1="62" x2="28" y2="44" stroke="#FFFDF7" stroke-width="3"/>
+      <line x1="50" y1="62" x2="72" y2="44" stroke="#FFFDF7" stroke-width="3"/>
+    </symbol>
+    <!-- utensils (P1) -->
+    <symbol id="ladle" viewBox="0 0 100 92">
+      <line x1="50" y1="6" x2="50" y2="56" stroke="#1E1D1A" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="50" cy="10" r="5" fill="none" stroke="#1E1D1A" stroke-width="3.5"/>
+      <ellipse cx="50" cy="72" rx="17" ry="14" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="4"/>
+      <ellipse cx="50" cy="72" rx="10" ry="8" fill="#E8B83A"/>
+    </symbol>
+    <symbol id="spatula" viewBox="0 0 100 98">
+      <line x1="50" y1="6" x2="50" y2="44" stroke="#1E1D1A" stroke-width="6" stroke-linecap="round"/>
+      <rect x="34" y="44" width="32" height="48" rx="8" fill="#EFE5CB" stroke="#1E1D1A" stroke-width="4"/>
+      <line x1="44" y1="54" x2="44" y2="82" stroke="#1E1D1A" stroke-width="2.5"/>
+      <line x1="56" y1="54" x2="56" y2="82" stroke="#1E1D1A" stroke-width="2.5"/>
+    </symbol>
+    <symbol id="jar" viewBox="0 20 100 74">
+      <rect x="28" y="26" width="44" height="13" rx="4" fill="#E8B83A" stroke="#1E1D1A" stroke-width="3.5"/>
+      <rect x="30" y="39" width="40" height="49" rx="9" fill="#EFE5CB" stroke="#1E1D1A" stroke-width="4"/>
+      <rect x="38" y="56" width="24" height="15" fill="#2F6B4F" stroke="#1E1D1A" stroke-width="2.5"/>
+      <line x1="42" y1="63" x2="58" y2="63" stroke="#FFFDF7" stroke-width="2.5"/>
+    </symbol>
+    <!-- steam / accents (P1) -->
+    <symbol id="steam-wisp" viewBox="0 4 100 92">
+      <path d="M50 88 q12 -14 0 -28 q-12 -14 0 -28 q8 -10 2 -22" fill="none" stroke="#1E1D1A" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ink-star" viewBox="0 0 100 100">
+      <path d="M50 14 C54 40 58 46 84 50 C58 54 54 60 50 86 C46 60 42 54 16 50 C42 46 46 40 50 14 Z" fill="#1E1D1A"/>
+    </symbol>
+    <!-- restaurant sign module (P1) -->
+    <symbol id="counter-sign" viewBox="0 0 100 80">
+      <line x1="30" y1="6" x2="30" y2="28" stroke="#1E1D1A" stroke-width="3.5"/>
+      <line x1="70" y1="6" x2="70" y2="28" stroke="#1E1D1A" stroke-width="3.5"/>
+      <rect x="12" y="28" width="76" height="46" rx="7" fill="#FFFDF7" stroke="#1E1D1A" stroke-width="4"/>
+      <rect x="21" y="39" width="42" height="6" rx="3" fill="#1E1D1A"/>
+      <rect x="21" y="50" width="30" height="6" rx="3" fill="#1E1D1A" opacity="0.5"/>
+      <circle cx="72" cy="60" r="8" fill="#D94F35" stroke="#1E1D1A" stroke-width="2.5"/>
+    </symbol>
+  </defs>
+</svg>
+

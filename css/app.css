@@ -1,0 +1,282 @@
+/* Living Kitchen — composition layer (14/15).
+   Page/route layout ONLY. All look (surfaces, type, controls, feedback, motion gate)
+   lives in primitives.css; all values live in tokens.css. No raw colors/timings here. */
+
+/* ---------- Global nav: quiet semantic rail (15) ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: var(--z-interactive);
+  background: var(--paper);
+  border-bottom: var(--stroke-ui) solid var(--ink);
+}
+.nav {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; align-items: center; gap: var(--s4);
+  padding: var(--s3) var(--s4);
+}
+.brand {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 700;
+  text-decoration: none; color: var(--ink);
+  display: flex; align-items: center; gap: 10px;
+}
+.brand-mark {
+  width: 30px; height: 30px; flex: none;
+  background: var(--mustard);
+  border: var(--stroke-ui) solid var(--ink);
+  border-radius: 50% 46% 52% 48%; /* controlled irregularity (06 law 7) */
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.brand-mark svg { display: block; }
+.nav-links { display: flex; gap: 4px; margin-left: auto; flex-wrap: wrap; }
+.nav-links a {
+  color: var(--ink); text-decoration: none;
+  display: inline-flex; align-items: center; min-height: var(--target-min);
+  padding: 8px 12px; border-radius: var(--radius-control);
+  border: 2px solid transparent;
+  transition: transform var(--t-snap) var(--ease-out), background var(--t-snap) var(--ease-out);
+}
+.nav-links a[aria-current="page"] {
+  border-color: var(--ink); background: var(--paper);
+  box-shadow: var(--shadow-stamp); /* stamped station marker, not glass */
+}
+@media (hover: hover) {
+  .nav-links a:hover { background: var(--paper-dim); transform: translateY(-1px); }
+}
+.nav-links a:active { transform: translateY(1px); box-shadow: none; }
+.peek {
+  font: inherit; cursor: pointer; color: var(--ink);
+  background: var(--paper-dim);
+  border: var(--stroke-ui) solid var(--ink); border-radius: var(--radius-control);
+  padding: 6px 12px; min-height: var(--target-min);
+}
+@media (hover: hover) {
+  .peek:hover { transform: translateY(-1px); }
+}
+
+/* ---------- World shell layout: editorial asymmetry, one anchor (11) ---------- */
+.world-shell { max-width: 1100px; margin: 0 auto; padding: 0 var(--s4) var(--s16); }
+.kitchen-stage { margin-top: var(--s6); padding: var(--s6); }
+.stage-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: var(--s6); align-items: center; }
+.stage-scene { width: 100%; height: auto; max-height: 400px; z-index: var(--z-env); }
+.hero-sub { max-width: 52ch; color: var(--ink-soft); margin: 0 0 var(--s4); }
+.hero-sub strong { color: var(--ink); }
+
+/* ---------- Routes / sections ---------- */
+.route { display: none; }
+.route.active { display: block; animation: route-reveal var(--t-reveal) var(--ease-out); }
+@keyframes route-reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------- Discovery composition ---------- */
+.stations { display: flex; gap: var(--s2); flex-wrap: wrap; margin: var(--s4) 0; }
+.counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--s4); }
+/* Editorial large/small: cards never bloat to full width on sparse results (11) */
+.counters > * { max-width: 400px; }
+.counter h3, .food-card h3, .menu-item h3 { margin: 8px 0 4px; font-size: var(--text-card); }
+/* Margin discipline lives here, never inline: stacked rows, spread headings, tray notes */
+#restaurant-detail .menu-item, #cart-detail .menu-item { margin-bottom: var(--s3); }
+.spread > h3 { margin: 0; }
+.counter-hero .section-title, .panel > h3:first-child { margin-top: 0; }
+.tray-note { margin: 8px 0 4px; }
+.on-tray p.row .meta, #cart-detail p.row .meta { margin: 0; }
+.variant-pick { margin: 0; }
+.search-row .meta { margin: 0; }
+
+/* Dish frame: quiet inset stage so food leads (02/11). Fixed aspect = no layout shift.
+   Art capped near its authored size so strokes stay in illustration scale. */
+.dish-frame {
+  display: block;
+  background: var(--paper-dim);
+  border: var(--stroke-ui) solid var(--ink);
+  border-radius: 10px;
+  padding: var(--s2);
+  margin-bottom: var(--s3);
+}
+.dish-svg { display: block; width: 100%; height: auto; aspect-ratio: 10 / 7; max-width: 260px; margin-inline: auto; }
+
+/* Menu rows: plated art pinned left, confidence copy right (desktop). */
+@media (min-width: 700px) {
+  #restaurant-detail .menu-item {
+    display: grid; grid-template-columns: 168px 1fr; gap: var(--s4); align-items: center;
+  }
+  #restaurant-detail .menu-item .dish-frame { margin-bottom: 0; }
+}
+
+/* Counter hero: same kitchen, distinct zone — tableau + identity (08/14) */
+.counter-hero {
+  display: grid; grid-template-columns: 200px 1fr; gap: var(--s4); align-items: center;
+  margin-bottom: var(--s4);
+}
+.counter-hero .dish-frame { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .counter-hero { grid-template-columns: 1fr; }
+  .counter-hero .dish-svg { max-width: 220px; }
+}
+
+/* Menu sections: label-as-state group headers (05 pattern) */
+.menu-section { margin: var(--s6) 0 var(--s3); display: flex; align-items: center; gap: var(--s2); }
+.menu-section .label { font-size: 14px; color: var(--ink); }
+
+/* Modifiers: conventional radios as 44px pills, stacked below the dish (15) */
+.mods { border: 0; padding: 0; margin: 0 0 var(--s2); }
+.mods legend { font-weight: 700; font-size: var(--text-meta); padding: 0; margin-bottom: 6px; display: flex; gap: 8px; align-items: center; }
+.mod-row { display: flex; gap: var(--s2); flex-wrap: wrap; }
+.mod { cursor: pointer; }
+.mod input { position: absolute; opacity: 0; pointer-events: none; }
+.mod span {
+  display: inline-flex; align-items: center; min-height: var(--target-min);
+  padding: 8px 16px; border-radius: var(--radius-pill);
+  border: var(--stroke-ui) solid var(--ink); background: var(--paper); color: var(--ink);
+  font-weight: 600; transition: transform var(--t-snap) var(--ease-out), box-shadow var(--t-snap) var(--ease-out);
+}
+.mod input:checked + span { background: var(--mustard); box-shadow: var(--shadow-stamp); }
+.mod input:focus-visible + span { outline: var(--focus-ring); outline-offset: var(--focus-offset); }
+.on-tray { border-top: 2px dashed var(--line); margin-top: var(--s2); padding-top: var(--s2); }
+
+/* ---------- Hero assembly stage (10): functional order-state ballet ----------
+   Fixed overlay, pointer-events none — expressive motion never blocks input.
+   transform-box makes SVG pop origins exact; reduced-motion gate disables all of it. */
+.asm-stage {
+  position: fixed; z-index: var(--z-feedback); pointer-events: none;
+}
+.asm-svg { display: block; width: 100%; height: auto; filter: var(--shadow-food); }
+.asm-svg [data-asm="pack"] { transform-box: fill-box; }
+.asm-pop { transform-box: fill-box; transform-origin: center; }
+.asm-ticket {
+  margin-top: 6px; text-align: center;
+  font-size: 13px; font-weight: 700;
+  background: var(--paper); color: var(--ink);
+  border: var(--stroke-ui) solid var(--ink); border-radius: var(--radius-pill);
+  padding: 2px 10px; opacity: 0;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Fragment targets clear the sticky header */
+.route { scroll-margin-top: 76px; }
+
+/* Search focus quiets the environment around the field (15) */
+.stage-scene { transition: opacity var(--t-settle) var(--ease-out), transform var(--t-settle) var(--ease-out); }
+body.is-searching .stage-scene { opacity: 0.3; transform: scale(0.985); }
+
+/* Entry assembly: local, staggered, capped at 6 (08 rule 8, 12 object timing) */
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.enter > article { animation: card-enter 380ms var(--ease-out) backwards; }
+.enter > article:nth-child(2) { animation-delay: 60ms; }
+.enter > article:nth-child(3) { animation-delay: 120ms; }
+.enter > article:nth-child(4) { animation-delay: 180ms; }
+.enter > article:nth-child(5) { animation-delay: 240ms; }
+.enter > article:nth-child(6) { animation-delay: 300ms; }
+
+/* Success: dish settles on its card; tray count stamps (15) */
+@keyframes place-settle {
+  0% { transform: scale(0.94) rotate(-1deg); }
+  60% { transform: scale(1.02); }
+  100% { transform: none; }
+}
+.just-added .dish-svg { animation: place-settle 450ms var(--ease-settle); }
+@keyframes nav-bump {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.06) rotate(-1deg); } /* overshoot ≤6% (12) */
+  100% { transform: none; }
+}
+[data-nav="cart"].bump { animation: nav-bump 320ms var(--ease-out); }
+
+/* Loading skeletons: flat bars, reserved layout, opacity pulse (no gradients, no fake progress) */
+@keyframes skel-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+.skel .dish-frame { padding: 0; overflow: hidden; }
+.skel-img { display: block; aspect-ratio: 10 / 7; background: var(--paper-dim); animation: skel-pulse 900ms var(--ease-out) infinite; }
+.skel-line { height: 14px; border-radius: 7px; background: var(--paper-dim); margin: 0 0 8px; animation: skel-pulse 900ms var(--ease-out) infinite; }
+#search-results { min-height: 200px; }
+
+/* ---------- Checkout composition: calm packing station (03/09) ---------- */
+.checkout-grid { display: grid; grid-template-columns: 1fr 360px; gap: var(--s4); }
+@media (max-width: 860px) { .checkout-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Journey line: the pack travels its own map (10 secondary signature) ----------
+   Nodes carry state (herb done / mustard now); the pack marker glides on advance.
+   The OL milestones beneath stay the semantic record; this SVG is the physical one. */
+.journey-line { display: block; width: 100%; height: auto; max-width: 460px; margin: var(--s2) 0; }
+.journey-line .jnode { fill: var(--paper); stroke: var(--ink); stroke-width: 3; }
+.journey-line .jnode.done { fill: var(--herb); stroke: var(--herb); }
+.journey-line .jnode.now { fill: var(--mustard); animation: jnode-pulse 2.4s var(--ease-out) infinite; }
+@keyframes jnode-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+/* Packed → journey continuity: the fresh ticket prints in once, then rests (09) */
+@keyframes ticket-print {
+  from { opacity: 0; transform: translateY(-18px); }
+  60% { opacity: 1; transform: translateY(2px); }
+  to { opacity: 1; transform: none; }
+}
+.ticket.print-in { animation: ticket-print 700ms var(--ease-out); }
+/* Exception: blocked-station cue + conventional recovery (13/15) */
+.exception {
+  border: var(--stroke-ui) solid var(--brick-deep);
+  border-radius: var(--radius-card);
+  background: var(--paper);
+  padding: var(--s3) var(--s4); margin-bottom: var(--s4);
+}
+.status-pill.warn { background: var(--brick); color: var(--on-accent); border-color: var(--brick-deep); }
+.milestones { list-style: none; padding: 0; margin: var(--s4) 0; display: grid; gap: 0; }
+.milestones li {
+  display: grid; grid-template-columns: 28px 1fr; gap: var(--s3);
+  padding: 10px 0; position: relative;
+}
+.milestones li::before {
+  content: ""; width: 16px; height: 16px; margin-top: 4px;
+  border: 2px solid var(--ink); border-radius: 50%; background: var(--paper);
+}
+.milestones li.done::before { background: var(--herb); border-color: var(--herb); }
+.milestones li.now::before { background: var(--mustard); }
+.milestones li:not(:last-child)::after {
+  content: ""; position: absolute; left: 9px; top: 32px; bottom: -6px;
+  width: 2px; background: var(--line);
+}
+
+/* ---------- Tray totals (receipt lines) ---------- */
+.totals { font-variant-numeric: tabular-nums; }
+.totals dt { color: var(--ink-soft); } .totals dd { margin: 0; font-weight: 700; }
+
+/* ---------- Search composition ---------- */
+.search-row { display: flex; gap: var(--s2); margin: var(--s4) 0; flex-wrap: wrap; align-items: center; }
+.search-row input {
+  flex: 1; min-width: 220px; font: inherit; padding: 12px 14px;
+  border: var(--stroke-ui) solid var(--ink); border-radius: var(--radius-control);
+  background: var(--paper); min-height: var(--target-min);
+}
+.search-row select {
+  font: inherit; padding: 12px;
+  border: var(--stroke-ui) solid var(--ink); border-radius: var(--radius-control);
+  background: var(--paper); color: var(--ink); min-height: var(--target-min);
+}
+
+/* ---------- Tablet (700–1024): reduced overlap, relationships preserved (17) ----------
+   Two-column stage persists to 900px; below, zones stack with tighter rhythm. */
+@media (max-width: 1024px) {
+  .world-shell { padding: 0 var(--s3) var(--s12); }
+  .kitchen-stage { margin-top: var(--s4); }
+  .stage-grid { gap: var(--s4); }
+}
+
+/* ---------- Footer ---------- */
+.site-footer { max-width: 1100px; margin: 0 auto; padding: var(--s8) var(--s4); color: var(--ink-soft); font-size: 14px; }
+.site-footer a { color: var(--ink); }
+
+/* ---------- Responsive: stacked zones, reduced travel (17) ---------- */
+@media (max-width: 900px) {
+  .stage-grid { grid-template-columns: 1fr; gap: var(--s4); }
+  .stage-scene { max-height: 300px; }
+}
+@media (max-width: 700px) {
+  .nav { flex-wrap: wrap; }
+  .kitchen-stage { padding: var(--s4); }
+}

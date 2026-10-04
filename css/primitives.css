@@ -1,0 +1,246 @@
+/* Living Kitchen — canonical visual primitives (11/12/13/15/17).
+   Single source of truth for every reusable surface/object/control.
+   Product screens compose these; no screen-specific look lives here.
+   Values come ONLY from tokens.css — no raw hex/rgba outside this file's contract. */
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper-env);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.5;
+}
+
+/* ---------- World + illustration + interactive surfaces ----------
+   Every selector below is live (verified 2026-10-04); no reserve names ship. */
+.kitchen-stage {
+  position: relative; z-index: var(--z-env);
+  border: var(--stroke-illo) solid var(--ink);
+  background: var(--paper);
+  border-radius: var(--radius-stage);
+  overflow: hidden;
+}
+
+.surface-card, .counter, .food-card, .menu-item, .panel, .ticket {
+  background: var(--paper);
+  border: var(--stroke-ui) solid var(--ink);
+  border-radius: var(--radius-card);
+  padding: var(--s4);
+}
+
+.ticket {
+  border-style: dashed;
+  position: relative;
+}
+
+.tray-empty {
+  border: var(--stroke-ui) dashed var(--ink);
+  border-radius: var(--radius-card);
+  padding: var(--s6);
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+/* ---------- Food object (16): modular parts animate independently ---------- */
+.food-object { max-width: 100%; height: auto; filter: var(--shadow-food); }
+.food-object [data-part="steam"] { shape-rendering: geometricPrecision; }
+
+/* Hover/focus: dish lifts 2–6px (15). Pointer reaction never moves text. */
+.counter .dish-svg, .food-card .dish-svg, .menu-item .dish-svg {
+  transition: transform var(--t-settle) var(--ease-settle);
+}
+@media (hover: hover) {
+  .counter:hover .dish-svg, .food-card:hover .dish-svg, .menu-item:hover .dish-svg { transform: translateY(-4px) rotate(-1deg); }
+}
+
+/* ---------- Type primitives ---------- */
+.display-hero, .hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  line-height: 1.02; letter-spacing: -0.01em;
+  margin: 8px 0;
+}
+.display-section, .section-title {
+  font-family: var(--font-display);
+  font-size: var(--text-section);
+  line-height: 1.08;
+  margin: var(--s8) 0 var(--s2);
+}
+.text-note, .section-note { color: var(--ink-soft); margin: 0 0 var(--s4); max-width: 62ch; }
+.meta { font-size: var(--text-meta); color: var(--ink-soft); margin: 0 0 8px; }
+.price { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+/* Label: identity + status in one stamped strip (05 pattern: label-as-state) */
+.label, .ticket-head, .stage-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ---------- Layout utilities (spacing rhythm only, no look) ---------- */
+.row { display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; }
+.spread { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s3); }
+
+/* ---------- Badge: state cue with text, never color alone (17) ---------- */
+.badge, .status-pill {
+  display: inline-block;
+  font-size: 13px; font-weight: 700;
+  border: var(--stroke-ui) solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 2px 10px;
+  background: var(--mustard); color: var(--ink);
+}
+.badge--success, .status-pill.ok { background: var(--herb); color: var(--on-accent); border-color: var(--herb); }
+.badge--info { background: var(--cobalt); color: var(--on-accent); border-color: var(--cobalt); }
+
+/* ---------- Button: deterministic tactile press (13) ---------- */
+.btn {
+  font: inherit; font-weight: 700; cursor: pointer;
+  border: var(--stroke-ui) solid var(--ink);
+  border-radius: var(--radius-control);
+  padding: 10px 18px;
+  background: var(--brick); color: var(--paper);
+  transition: transform var(--t-snap) var(--ease-out), box-shadow var(--t-snap) var(--ease-out);
+  box-shadow: var(--shadow-stamp);
+  min-height: var(--target-min);
+}
+.btn:active { transform: translate(1px, 2px); box-shadow: var(--shadow-press); }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-1px); }
+}
+.btn.secondary { background: var(--paper); color: var(--ink); }
+.btn.quiet { background: var(--herb); }
+.btn[disabled] { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Quantity: conventional + semantic (15). Count updates immediately. */
+.qty { display: inline-flex; align-items: center; gap: 8px; }
+.qty button {
+  width: var(--target-min); height: var(--target-min); font-size: 20px; font-weight: 700;
+  background: var(--paper); color: var(--ink);
+  border: var(--stroke-ui) solid var(--ink);
+  border-radius: 10px; cursor: pointer;
+}
+.qty button:active { transform: translateY(1px); }
+.qty output { min-width: 2ch; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+/* Category selector = kitchen stations (15) */
+.station {
+  font: inherit; cursor: pointer;
+  background: var(--paper); color: var(--ink);
+  border: var(--stroke-ui) solid var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  min-height: var(--target-min);
+  transition: transform var(--t-snap) var(--ease-out), box-shadow var(--t-snap) var(--ease-out);
+}
+.station[aria-pressed="true"] { background: var(--mustard); box-shadow: var(--shadow-stamp); }
+@media (hover: hover) {
+  .station:hover { transform: translateY(-1px) rotate(-0.5deg); }
+}
+
+/* ---------- Form controls: calm, semantic (03/09) ---------- */
+.field { display: grid; gap: 6px; margin-bottom: var(--s3); }
+.field label { font-weight: 700; font-size: var(--text-meta); }
+.field input, .field select {
+  font: inherit; padding: 12px;
+  border: var(--stroke-ui) solid var(--ink);
+  border-radius: var(--radius-control);
+  background: var(--paper); color: var(--ink);
+  max-width: 420px; min-height: var(--target-min);
+}
+.form-error { color: var(--brick-deep); font-weight: 700; }
+
+/* ---------- Divider ---------- */
+.divider { border: 0; border-top: var(--stroke-ui) solid var(--ink); margin: var(--s4) 0; }
+.divider--dashed { border-top-style: dashed; border-top-color: var(--line); }
+
+/* ---------- Drawer: physical tray metaphor, semantic dialog behavior (15) ---------- */
+.drawer-backdrop {
+  position: fixed; inset: 0; z-index: var(--z-modal);
+  background: var(--scrim);
+  opacity: 0; pointer-events: none;
+  transition: opacity var(--t-settle) var(--ease-out);
+}
+.drawer-backdrop.open { opacity: 1; pointer-events: auto; }
+.drawer {
+  position: fixed; z-index: var(--z-modal);
+  top: 0; right: 0; height: 100dvh; width: min(420px, 94vw);
+  background: var(--paper); color: var(--ink);
+  border-left: var(--stroke-illo) solid var(--ink);
+  padding: var(--s6) var(--s4);
+  overflow-y: auto;
+  transform: translateX(105%);
+  transition: transform var(--t-reveal) var(--ease-out);
+}
+.drawer.open { transform: none; }
+.drawer-title { font-family: var(--font-display); font-size: var(--text-card); margin: 0 0 var(--s3); }
+@media (max-width: 700px) {
+  .drawer {
+    top: auto; bottom: 0; right: 0; left: 0;
+    width: auto; height: auto; max-height: 86dvh;
+    border-left: 0; border-top: var(--stroke-illo) solid var(--ink);
+    border-radius: 20px 20px 0 0;
+    transform: translateY(105%);
+  }
+  .drawer.open { transform: none; }
+}
+
+/* ---------- Focus treatment: persistent, visible, motion-independent (13/15/17) ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible,
+.drawer:focus-visible, [tabindex]:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--ink); color: var(--paper);
+  padding: var(--s2) var(--s4); z-index: 100;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Feedback: short entry/settle, no infinite bounce (15) ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px);
+  background: var(--ink); color: var(--paper);
+  padding: 10px 18px; border-radius: var(--radius-pill); opacity: 0;
+  transition: opacity var(--t-settle) var(--ease-out), transform var(--t-settle) var(--ease-out);
+  z-index: var(--z-feedback); pointer-events: none;
+  max-width: min(92vw, 480px); text-align: center;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.notice {
+  border: var(--stroke-ui) solid var(--ink); background: var(--mustard); color: var(--ink);
+  padding: var(--s3) var(--s4); border-radius: var(--radius-control);
+  font-weight: 600;
+}
+
+/* ---------- Environmental motion (08/12/16): steam only, low-amplitude, resting state.
+   Justification: steam/heat marks are P1 ambience; transform+opacity only (17 perf);
+   global reduced-motion gate disables it. Nothing else on the page loops. */
+@keyframes steam-rise {
+  0% { opacity: 0; transform: translateY(4px); }
+  30% { opacity: 0.5; }
+  70% { opacity: 0.45; transform: translateY(-6px); }
+  100% { opacity: 0; transform: translateY(-12px); }
+}
+.steam-rise { opacity: 0; animation: steam-rise 3.4s var(--ease-out) infinite; }
+.steam-rise.late { animation-delay: 1.7s; }
+
+/* ---------- Motion gate: complementary reduced-motion experience (12/17) ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .route.active { animation: none; }
+  .food-object { filter: none; }
+  .drawer, .drawer-backdrop { transition: none; }
+}
